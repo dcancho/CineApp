@@ -9,14 +9,14 @@ private:
 	string nombreUsuario;
 	string contraseña;
 public:
-	Cliente()
+	Cliente() : Entidad()
 	{
 		nombre = "";
 		DNI = "";
 		nombreUsuario = "";
 		contraseña = "";		//Hashed
 	}
-	Cliente(string nombre, string DNI, string nombreUsuario, string contraseña)
+	Cliente(string nombre, string DNI, string nombreUsuario, string contraseña) : Entidad()
 	{
 		this->nombre = nombre;
 		this->DNI = DNI;

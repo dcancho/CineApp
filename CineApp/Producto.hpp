@@ -35,6 +35,10 @@ public:
 	{
 		out << Nombre << ": " << Valor << endl;
 	}
+	void ImprimirFactura(ostream out)
+	{
+		out << "- " << Nombre << "\t\t\t S/." << Valor << endl;
+	}
 	void setID(int id)
 	{
 		this->ID = id;

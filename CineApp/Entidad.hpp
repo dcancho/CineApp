@@ -9,6 +9,10 @@ class Entidad
 protected:
 	int ID = 0;
 public:
+	Entidad()
+	{
+		ID = 0;
+	}
 	//Formato lineal para guardar en archivo de texto
 	virtual string ToString() {}
 	//Recuperar valores a partir de un string de archivo
