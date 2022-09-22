@@ -16,6 +16,13 @@ public:
 	~Pedido() {}
 	string ToString()
 	{
-		
+		return "Pedido Nro.: " + IDCliente+"\n";
+	}
+	void Imprimir(ostream out)
+	{
+		for (int i = 0; i < Productos.cantidad; i++;)
+		{
+			Productos->AccedeElemento(i)->ImprimirFactura(ostream out);
+		}
 	}
 };

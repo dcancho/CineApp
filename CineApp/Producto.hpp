@@ -22,7 +22,7 @@ public:
 	}
 	string ToString()
 	{
-		return Nombre + ": " + std::to_string(Valor);
+		return Nombre + ": " + std::to_string(Valor)+"\n";
 	}
 private:
 	void FromString()

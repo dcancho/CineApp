@@ -41,6 +41,7 @@ public:
         imprime(aux->sig);
         cout << endl;
     }
+    T AccedeElemento(int n) {}
     void Borrar(int n) {
         Nodo<T>* lista = inicio;
         if (lista != nullptr) {
