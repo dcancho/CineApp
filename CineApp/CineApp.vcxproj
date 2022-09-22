@@ -111,6 +111,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Archivo.hpp" />
+    <ClInclude Include="Cliente.hpp" />
+    <ClInclude Include="Entidad.hpp" />
+    <ClInclude Include="Funcion.hpp" />
+    <ClInclude Include="Hash.hpp" />
+    <ClInclude Include="Lista.hpp" />
+    <ClInclude Include="Nodo.hpp" />
+    <ClInclude Include="Pedido.hpp" />
+    <ClInclude Include="Pila.hpp" />
+    <ClInclude Include="Producto.hpp" />
+    <ClInclude Include="SBaseDatos.hpp" />
+    <ClInclude Include="SSesion.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
