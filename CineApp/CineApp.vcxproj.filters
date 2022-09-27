@@ -51,7 +51,7 @@
     <ClInclude Include="SSesion.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\source\TF\TF\Cola.hpp">
+    <ClInclude Include="Cola.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
