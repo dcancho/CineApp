@@ -208,7 +208,6 @@ namespace CineApp
 
 	int main()
 	{
-		Sesion->isLogged = true;
 		int opcion = 0;
 		do
 		{
