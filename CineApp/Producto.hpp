@@ -55,7 +55,13 @@ private:
 public:
 	void Imprimir(ostream out)
 	{
+		out.precision(2);
 		out << "- " << Nombre << "\t\t\t S/." << Valor << endl;
+	}
+	void Imprimir()
+	{
+		cout.precision(2);
+		cout << Nombre << "\t\t\t S/." << Valor << endl;
 	}
 	char* ToText()
 	{

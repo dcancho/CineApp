@@ -15,9 +15,9 @@ namespace CineApp
 	static SSesion* Sesion = SSesion::getInstance();
 	static SBaseDatos* BaseDatos = SBaseDatos::getInstance();
 	
+	//Mostrar cartelera, recorre lista Cartelera e imprime los titulos
 	void MostrarCartelera()
 	{
-		//Mostrar cartelera, recorre lista Cartelera e imprime los titulos
 		int i = 0;
 		while (i!=BaseDatos->Cartelera->longitud())
 		{
@@ -35,17 +35,49 @@ namespace CineApp
 		Pedido* nuevoPedido = new Pedido();
 
 		//Asignar ID de cliente al pedido
-
-
+		nuevoPedido->IDCliente = Sesion->IDUsuario;
+		
 		//Imprimir funciones y escoger una, asignar a Pedido
-		
+		for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
+		{
+			BaseDatos->Funciones->obtenerPos(i)->Imprimir(cout);
+		}
+		int IDFuncion;
+		cout << "Ingrese el ID de la funcion que desea comprar: ";
+		cin >> IDFuncion;
+		nuevoPedido->IDFuncion = IDFuncion;
 		//Seleccionar cantidad de entradas(Asientos)
-		
+		printf("Cuantas entradas desea comprar? ");
+		int cantidad;
+		cin >> cantidad;
+		do
+		{
+			nuevoPedido->Productos->agregaFinal(new Producto("Asiento x1", 25.0f));
+			cantidad--;
+		}while(cantidad);
 		//Seleccionar productos de la dulcería
+		for (int i = 0; i < BaseDatos->Productos->longitud(); i++)
+		{
+			cout << i + 1<<") ";
+			BaseDatos->Productos->obtenerPos(i)->Imprimir();
+		}
+		printf("Que productos desea comprar? ");
+		printf("Presione 0 para terminar de comprar productos\n");
+		int opcion;
+		do
+		{
+			cin >> opcion;
+			if (opcion > 0 && opcion < BaseDatos->Productos->longitud())
+			{
+				nuevoPedido->Productos->agregaFinal(BaseDatos->Productos->obtenerPos(opcion - 1));
+			}
 
-
+		} while (opcion != 0);
 		//Agregar pedido a la lista de pedidos
-		Sesion->Pedidos->agregaFinal(nuevoPedido);
+		printf("Compra terminada. Presione cualquier tecla para volver al menu...\n");
+		Sesion->Pedidos->insertar(nuevoPedido);
+		nuevoPedido->ImprimirComprobante();
+		system("pause");
 
 	}
 
@@ -140,7 +172,10 @@ namespace CineApp
 			}
 			break;
 		case '4':
-			//Imprimir datos productos
+			for (int i = 0; i < BaseDatos->Productos->longitud(); i++)
+			{
+				cout << BaseDatos->Productos->obtenerPos(i)->ToString() << endl;
+			}
 			break;
 		case '0':
 			return;
@@ -163,7 +198,7 @@ namespace CineApp
 
 	int main()
 	{
-		
+		Sesion->isLogged = true;
 		int opcion = 0;
 		do
 		{

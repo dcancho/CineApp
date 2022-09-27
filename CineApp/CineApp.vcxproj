@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClInclude Include="Archivo.hpp" />
     <ClInclude Include="Cliente.hpp" />
+    <ClInclude Include="E:\source\TF\TF\Cola.hpp" />
     <ClInclude Include="Entidad.hpp" />
     <ClInclude Include="Funcion.hpp" />
     <ClInclude Include="Hash.hpp" />
@@ -133,6 +134,7 @@
     <Text Include="cartelera.txt" />
     <Text Include="clientes.txt" />
     <Text Include="funciones.txt" />
+    <Text Include="productos.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

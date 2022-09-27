@@ -69,4 +69,8 @@ public:
 		strcpy(output, ss.str().c_str());
 		return output;
 	}
+	void Imprimir(ostream& out)
+	{
+		out << "- " << nombrePelicula << "\t\t\t" << horaInicio << "\t\t\t" << horaFin << "\t\t\t" << capacidadActual << "/" << capacidadMaxima << "\t\t\tS/." << costoAsiento << endl;
+	}
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "Producto.hpp"
 #include "Lista.hpp"
+#include <ostream>
 
 class Pedido : public Entidad
 {
@@ -59,5 +60,16 @@ public:
 		{
 			out<<Productos->obtenerPos(i)->ToText();
 		}
+	}
+
+	void ImprimirComprobante()
+	{
+		ofstream out("Comprobante.txt");
+		out << "Pedido Nro: " << this->ID<<endl;
+		for (int i = 0; i < Productos->longitud(); i++)
+		{
+			out << Productos->obtenerPos(i)->ToText();
+		}
+		out.close();
 	}
 };

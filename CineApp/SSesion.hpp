@@ -1,5 +1,8 @@
 ﻿#pragma once
 #include "Lista.hpp"
+#include "Cola.hpp"
+#include "Pedido.hpp"
+#include "SBaseDatos.hpp"
 
 class SSesion
 {
@@ -19,7 +22,7 @@ public:
 	}
 	char* NombreUsuario;
 	int IDUsuario;
-	Lista<Entidad*>* Pedidos = new Lista<Entidad*>();
+	Cola<Pedido*>* Pedidos = new Cola<Pedido*>();
 	bool isLogged;
 	void IniciarSesion(char* nombre)
 	{
@@ -32,6 +35,14 @@ public:
 		IDUsuario = 0;
 		Pedidos = nullptr;
 		NombreUsuario = "invitado";
+	}
+	void FlushData(SBaseDatos* db)
+	{
+		//Vaciar datos de Cola "Pedidos" a la base de datos
+		while (Pedidos->getCantidad()!=0)
+		{
+			db->Pedidos->agregaFinal(Pedidos->SacarCola());
+		}
 	}
 private:
 	static SSesion* Sesion;

@@ -35,11 +35,13 @@ private:
 	{
 		Clientes = new Lista<Cliente*>();
 		Pedidos = new Lista<Pedido*>();
+		Productos = new Lista<Producto*>();
 		Funciones = new Lista<Funcion*>();
 		Cartelera = new Lista<string>();
 		LeerCartelera();
 		LeerClientes();
 		LeerFunciones();
+		LeerProductos();
 	}
 	SBaseDatos(const SBaseDatos& obj) {}
 	void LeerClientes()
@@ -76,6 +78,15 @@ private:
 		while (getline(*archivo, linea))
 		{
 			Cartelera->agregaFinal(linea);
+		}
+	}
+	void LeerProductos()
+	{
+		ifstream* archivo = new ifstream("productos.txt");
+		string linea;
+		while (getline(*archivo, linea))
+		{
+			Productos->agregaFinal(new Producto(linea));
 		}
 	}
 };

@@ -51,7 +51,7 @@ public:
 		}
 	}
 	T SacarCola() {
-		T aux = inicio->elemm;
+		T aux = inicio->elem;
 		Eliminar();
 		return aux;
 	}

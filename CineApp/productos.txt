@@ -1,0 +1,12 @@
+﻿Canchita grande,17.99
+Canchita mediana,14.99
+Canchita pequeña,11.99
+Bebida grande,2.99
+Bebida mediana,1.99
+Bebida pequeña,0.99
+Papas grandes,3.99
+Papas medianas,2.99
+Papas pequeñas,1.99
+Hot dog,3.99
+Hamburguesa,4.99
+Pizza,5.99
