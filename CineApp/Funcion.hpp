@@ -39,10 +39,20 @@ public:
 	void FromString(string s)
 	{
 		vector<string> tokens;
-		//Valores divididos por comas, orden: Nombre, Capacidad máxima, Capacidad actual, Hora inicio, Hora fin, Costo asiento, ID
-		/*
-		TO-DO
-		*/
+		stringstream ss;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s[i] == ',')
+			{
+				tokens.push_back(ss.str());
+				ss.str("");
+			}
+			else
+			{
+				ss << s[i];
+			}
+		}
+		tokens.push_back(ss.str());
 		this->nombrePelicula = tokens[0];
 		this->capacidadMaxima = stoi(tokens[1]);
 		this->capacidadActual = stoi(tokens[2]);
@@ -50,6 +60,5 @@ public:
 		this->horaFin = tokens[4];
 		this->costoAsiento = stof(tokens[5]);
 		this->ID = stoi(tokens[6]);
-		
 	}
 };

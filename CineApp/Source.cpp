@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include <Windows.h>
 #include "SBaseDatos.hpp"
 #include "SSesion.hpp"
 #include "Archivo.hpp"
@@ -31,19 +32,42 @@ namespace CineApp
 		//Crear pedido
 		Pedido* nuevoPedido = new Pedido();
 
-		//Asignar ID de cliente
+		//Asignar ID de cliente al pedido
 
 
-		//Seleccionar sede
-		//Seleccionar película
-		//Seleccionar función (Horario)
+		//Imprimir funciones y escoger una, asignar a Pedido
+		
 		//Seleccionar cantidad de entradas(Asientos)
+		
 		//Seleccionar productos de la dulcería
 
 
 		//Agregar pedido a la lista de pedidos
-		//Sesion->Pedidos->Agregar(nuevoPedido);
+		Sesion->Pedidos->agregaFinal(nuevoPedido);
 
+	}
+
+	void BuscarPedido()
+	{
+		//Imprimir cada elemento de Sesion->Pedidos
+	}
+	void Cuenta()
+	{
+		if (Sesion->isLogged)
+		{
+			printf("Cerrando sesion...\n");
+			Sesion->CerrarSesion();
+			Sleep(1000);
+			printf("Sesion cerrada!\n");
+		}
+		else
+		{
+			printf("Iniciando sesion...\n");
+			//Pedir usuario y contrasena, comparar con lista de clientes en BaseDatos
+			Sleep(1000);
+			printf("Sesion iniciada!\n");
+		}
+		return;
 	}
 
 	void menu()
@@ -51,8 +75,9 @@ namespace CineApp
 		printf("Bienvenido, %s\n", Sesion->NombreUsuario);
 		printf("1) Mostrar cartelera\n");
 		printf("2) Registrar pedido\n");
-		printf("3) Cuenta\n");
-		printf("4) Salir\n");
+		printf("3) Buscar pedido\n");
+		printf("4) Cuenta\n");
+		printf("5) Salir\n");
 		printf("Escriba una opcion: ");
 	}
 
@@ -73,16 +98,20 @@ namespace CineApp
 				Sesion->isLogged ? RegistrarPedido() : printf("Por favor, inicie sesion para registrar un pedido...");
 				break;
 			case 3:
-				//ControlCuenta();
+				Sesion->isLogged ? BuscarPedido() : printf("Por favor, inicie sesion para buscar un pedido...");
 				break;
 			case 4:
-				//Salir
+				Cuenta();
+				break;
+			case 5:
+				printf("Saliendo...\n");
+				Sleep(1000);
 				break;
 			default:
 				printf("\nEscoja otra opción...");
 				break;
 			}
-		} while (opcion != 4);
+		} while (opcion != 5);
 		printf("Gracias por tu visita, %s, vuelve pronto!", Sesion->NombreUsuario);
 		system("pause");
 		return 0;

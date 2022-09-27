@@ -19,7 +19,7 @@ public:
 	}
 	Producto(string s)
 	{
-		
+		FromString(s);
 	}
 	char* ToString()
 	{

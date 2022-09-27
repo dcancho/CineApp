@@ -4,6 +4,7 @@
 #include "Cliente.hpp"
 #include "Pedido.hpp"
 #include "Funcion.hpp"
+#include "Producto.hpp"
 #include "Pila.hpp"
 
 class SBaseDatos {
@@ -27,6 +28,7 @@ public:
 	Lista<Pedido*>* Pedidos;
 	Lista<Funcion*>* Funciones;
 	Lista<string>* Cartelera;
+	Lista<Producto*>* Productos;
 private:
 	static SBaseDatos* BaseDatos;
 	SBaseDatos()
@@ -47,13 +49,23 @@ private:
 			Clientes->agregaFinal(new Cliente(linea));
 		}
 	}
-	void LeerProductos()
+	void LeerPedidos()
 	{
-		
+		ifstream* archivo = new ifstream("pedidos.txt");
+		string linea;
+		while (getline(*archivo, linea))
+		{
+			Pedidos->agregaFinal(new Pedido(linea));
+		}
 	}
 	void LeerFunciones()
 	{
-		
+		ifstream* archivo = new ifstream("funciones.txt");
+		string linea;
+		while (getline(*archivo, linea))
+		{
+			Funciones->agregaFinal(new Funcion(linea));
+		}
 	}
 	void LeerCartelera()
 	{

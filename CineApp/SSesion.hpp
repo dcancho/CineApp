@@ -21,7 +21,13 @@ public:
 	int IDUsuario;
 	Lista<Entidad*>* Pedidos = new Lista<Entidad*>();
 	bool isLogged;
-	
+	void CerrarSesion()
+	{
+		isLogged = false;
+		IDUsuario = 0;
+		Pedidos = nullptr;
+		NombreUsuario = "invitado";
+	}
 private:
 	static SSesion* Sesion;
 	SSesion()
