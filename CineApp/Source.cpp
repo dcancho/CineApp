@@ -190,7 +190,9 @@ namespace CineApp
 
 	void menu()
 	{
-		printf("*******************\n");
+		printf("*******************************************************\n");
+		printf("---------------------CINEPLANET------------------------\n");
+		printf("*******************************************************\n");
 		printf("Bienvenido, %s\n", Sesion->NombreUsuario);
 		printf("1) Mostrar cartelera\n");
 		printf("2) Registrar pedido\n");
@@ -198,8 +200,9 @@ namespace CineApp
 		printf("4) Cuenta\n");
 		printf("5) Salir\n");
 		printf("6) Administrador\n");
+		printf("*******************************************************\n");
 		printf("Escriba una opcion: ");
-		printf("\n*******************\n");
+
 
 	}
 
