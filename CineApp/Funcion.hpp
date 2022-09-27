@@ -1,4 +1,5 @@
-﻿#include "Entidad.hpp"
+﻿#pragma once
+#include "Entidad.hpp"
 
 class Funcion : public Entidad
 {

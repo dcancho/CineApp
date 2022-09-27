@@ -6,11 +6,11 @@ using namespace std;
 
 typedef unsigned int uint;
 
-template <typename T, T NADA = 0>
+template <typename T>
 class Lista {
     struct Nodo;
     typedef function<int(T, T)> Comp;
-
+	
     Nodo* ini;
     uint    lon; // número de elementos en la lista
 
@@ -44,16 +44,16 @@ public:
     T       buscar(T elem);
 };
 
-template <typename T, T NADA>
-struct Lista<T, NADA>::Nodo {
+template <typename T>
+struct Lista<T>::Nodo {
     T       elem;
     Nodo* sig; // puntero apunta al siguiente nodo
 
     Nodo(T elem = NADA, Nodo* sig = nullptr) : elem(elem), sig(sig) {}
 };
 
-template <typename T, T NADA>
-Lista<T, NADA>::~Lista() {
+template <typename T>
+Lista<T>::~Lista() {
     Nodo* aux = ini;
     while (aux != nullptr) {
         aux = ini;
@@ -62,18 +62,18 @@ Lista<T, NADA>::~Lista() {
     }
 }
 
-template <typename T, T NADA>
-uint Lista<T, NADA>::longitud() {
+template <typename T>
+uint Lista<T>::longitud() {
     return lon;
 }
 
-template <typename T, T NADA>
-bool Lista<T, NADA>::esVacia() {
+template <typename T>
+bool Lista<T>::esVacia() {
     return lon == 0;
 }
 
-template <typename T, T NADA>
-void Lista<T, NADA>::agregaInicial(T elem) {
+template <typename T>
+void Lista<T>::agregaInicial(T elem) {
     Nodo* nuevo = new Nodo(elem, ini);
     if (nuevo != nullptr) {
         ini = nuevo;
@@ -81,8 +81,8 @@ void Lista<T, NADA>::agregaInicial(T elem) {
     }
 }
 
-template <typename T, T NADA>
-void Lista<T, NADA>::agregaPos(T elem, uint pos) {
+template <typename T>
+void Lista<T>::agregaPos(T elem, uint pos) {
     if (pos > lon) return;
     if (pos == 0) {
         agregaInicial(elem);
@@ -99,19 +99,19 @@ void Lista<T, NADA>::agregaPos(T elem, uint pos) {
         }
     }
 }
-template <typename T, T NADA>
-void Lista<T, NADA>::agregaFinal(T elem) {
+template <typename T>
+void Lista<T>::agregaFinal(T elem) {
     agregaPos(elem, lon); // ;)
 }
 
-template <typename T, T NADA>
-void Lista<T, NADA>::modificarInicial(T elem) {
+template <typename T>
+void Lista<T>::modificarInicial(T elem) {
     if (lon > 0) {
         ini->elem = elem;
     }
 }
-template <typename T, T NADA>
-void Lista<T, NADA>::modificarPos(T elem, uint pos) {
+template <typename T>
+void Lista<T>::modificarPos(T elem, uint pos) {
     if (pos >= 0 && pos < lon) {
         Nodo* aux = ini;
         for (int i = 0; i < pos; i++) {
@@ -120,13 +120,13 @@ void Lista<T, NADA>::modificarPos(T elem, uint pos) {
         aux->elem = elem;
     }
 }
-template <typename T, T NADA>
-void Lista<T, NADA>::modificarFinal(T elem) {
+template <typename T>
+void Lista<T>::modificarFinal(T elem) {
     modificar(elem, lon - 1);
 }
 
-template <typename T, T NADA>
-void Lista<T, NADA>::eliminaInicial() {
+template <typename T>
+void Lista<T>::eliminaInicial() {
     if (lon > 0) {
         Nodo* aux = ini;
         ini = ini->sig;
@@ -134,21 +134,21 @@ void Lista<T, NADA>::eliminaInicial() {
         lon--;
     }
 }
-template <typename T, T NADA>
-void Lista<T, NADA>::eliminaPos(uint pos) {
+template <typename T>
+void Lista<T>::eliminaPos(uint pos) {
 
 }
-template <typename T, T NADA>
-void Lista<T, NADA>::eliminaFinal() {
+template <typename T>
+void Lista<T>::eliminaFinal() {
 
 }
 
-template <typename T, T NADA>
-T Lista<T, NADA>::obtenerInicial() {
+template <typename T>
+T Lista<T>::obtenerInicial() {
     return obtenerPos(0);
 }
-template <typename T, T NADA>
-T Lista<T, NADA>::obtenerPos(uint pos) {
+template <typename T>
+T Lista<T>::obtenerPos(uint pos) {
     if (pos >= 0 && pos < lon) {
         Nodo* aux = ini;
         for (int i = 0; i < pos; i++) {
@@ -160,13 +160,13 @@ T Lista<T, NADA>::obtenerPos(uint pos) {
         return NADA;
     }
 }
-template <typename T, T NADA>
-T Lista<T, NADA>::obtenerFinal() {
+template <typename T>
+T Lista<T>::obtenerFinal() {
     return obtenerPos(lon - 1);
 }
 
-template <typename T, T NADA>
-T Lista<T, NADA>::buscar(T elem) {
+template <typename T>
+T Lista<T>::buscar(T elem) {
     Nodo* aux = ini;
     while (aux != nullptr) {
         if (comparar(aux->elem, elem) == 0) {

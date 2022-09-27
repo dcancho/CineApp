@@ -16,43 +16,43 @@ private:
 	};
 	Nodo* cabeza;
 	Nodo* top;
-	size_t tamaño;
+	size_t tamano;
 public:
 	Pila() {
 		this->cabeza = this->top = nullptr;
-		this->tamaño = 0ll;
+		this->tamano = 0ll;
 	}
-	~Pila() { while (tamaño)pop(); }
-	size_t size() { return tamaño; }
-	T top() {
+	~Pila() { while (tamano)pop(); }
+	size_t size() { return tamano; }
+	T getTop() {
 		if (this->top == nullptr)cout << "No se puede retornar un valor de puntero nulo";
-		return this->top->value;
+		return this->top->valor;
 	}
 	void pop() {
-		if (tamaño == 0)cout << "Pila vacía";
-		if (tamaño == 1) {
+		if (tamano == 0)cout << "Pila vacia";
+		if (tamano == 1) {
 			delete this->cabeza;
 			this->cabeza = this->top = nullptr;
-			tamaño = 0;
+			tamano = 0;
 			return;
 		}
 		this->top = this->top->anterior;
 		this->top->siguiente->anterior = nullptr;
 		this->top->siguiente->siguiente = nullptr;
 		delete this->top->siguiente;
-		--tamaño;
+		--tamano;
 		this->top->siguiente = nullptr;
 	}
 	void push(T valor) {
 		Nodo* newNodo = new Nodo(valor);
-		if (!tamaño) {
+		if (!tamano) {
 			this->cabeza = this->top = newNodo;
-			tamaño = 1ll;
+			tamano = 1ll;
 			return;
 		}
 			newNodo->anterior = this->top;
 			this->top = newNodo;
-			++tamaño;
+			++tamano;
 		
 	}
 	void Imprime(T imprime) {
@@ -69,7 +69,7 @@ public:
 	}
 	void Revertir() {
 		Nodo* newNodo = new Nodo();
-		if (tamaño > 0) {
+		if (tamano > 0) {
 			pop();
 			Revertir();
 			push(valor);

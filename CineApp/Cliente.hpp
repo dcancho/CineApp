@@ -14,7 +14,7 @@ public:
 		nombre = "";
 		DNI = "";
 		nombreUsuario = "";
-		contraseña = "";		//Hashed
+		contraseña = "";		//Hashed(aun no implementado)
 	}
 	Cliente(string nombre, string DNI, string nombreUsuario, string contraseña) : Entidad()
 	{
@@ -29,16 +29,38 @@ public:
 		FromString(s);
 	}
 	~Cliente() {}
-	string ToString()
+	char* ToString()
 	{
-		return "@" +nombreUsuario + " (" + nombre + ": " + DNI + ") ";
+		stringstream ss;
+		ss << nombre << "," << DNI << "," << nombreUsuario << "," << contraseña<<","<<ID;
+		char* output = new char[ss.str().length() + 1];
+		strcpy(output, ss.str().c_str());
+		return output;
 	}
 private:
 	void FromString(string s)
 	{
 		//Values divided by commas, in order: nombre, DNI, nombreUsuario, contraseña
-		int pos = 0;
-		string token;
+		vector<string> tokens;
+		stringstream ss;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s[i] == ',')
+			{
+				tokens.push_back(ss.str());
+				ss.str("");
+			}
+			else
+			{
+				ss << s[i];
+			}
+		}
+		tokens.push_back(ss.str());
+		this->nombre = tokens[0];
+		this->DNI = tokens[1];
+		this->nombreUsuario = tokens[2];
+		this->contraseña = tokens[3];
+		this->ID = stoi(tokens[4]);
 	}
 public:
 	void Imprimir(ostream out)

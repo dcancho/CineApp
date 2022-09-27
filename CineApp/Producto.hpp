@@ -1,3 +1,4 @@
+#pragma once
 #include "Entidad.hpp"
 
 class Producto : public Entidad
@@ -22,28 +23,37 @@ public:
 	}
 	char* ToString()
 	{
-		//Formato:
-		//#Nombre#: S/ #Valor#
-		return nullptr;
+		stringstream ss;
+		ss << Nombre << Valor;
+		//convert ss to char*
+		char* output = new char[ss.str().length() + 1];
+		strcpy(output, ss.str().c_str());
+		return output;
 	}
 private:
-	void FromString()
+	void FromString(string s)
 	{
-		vector<string> tokens;
-		//Valores divididos por comas, orden: Nombre, Valor
-		/*
-		TO-DO
-		*/
+		//Valores divididos por comas, en orden: Nombre, Valor
+		vector<string>tokens;
+		stringstream ss;
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (s[i] == ',')
+			{
+				tokens.push_back(ss.str());
+				ss.str("");
+			}
+			else
+			{
+				ss << s[i];
+			}
+		}
+		tokens.push_back(ss.str());
 		this->Nombre = tokens[0];
 		this->Valor = stof(tokens[1]);
-		
 	}
 public:
 	void Imprimir(ostream out)
-	{
-		out << Nombre << ": " << Valor << endl;
-	}
-	void ImprimirFactura(ostream out)
 	{
 		out << "- " << Nombre << "\t\t\t S/." << Valor << endl;
 	}

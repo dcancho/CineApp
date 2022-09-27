@@ -1,3 +1,4 @@
+#pragma once
 #include "Producto.hpp"
 #include "Lista.hpp"
 #include "Funcion.hpp"

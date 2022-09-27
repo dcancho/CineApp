@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include <iostream>
+#include <string>
 
 using namespace std;
 template<class T>
@@ -36,7 +37,7 @@ public:
 	}
 	T LeerValor()
 	{
-		T elem;
+		T elem = new T();
 		file >> elem;
 		return elem;
 	}
@@ -77,9 +78,18 @@ public:
 	{
 		file.close();
 	}
-	string LeerLinea()
+	char* LeerLinea()
 	{
-		
+		if (!file.eof())
+		{
+			string output = "";
+			getline(file, output);
+			//convert string to char*
+			char* cstr = new char[output.length() + 1];
+			strcpy(cstr, output.c_str());
+			return cstr;
+		}
+		return nullptr;
 	}
 };
 
@@ -97,11 +107,11 @@ public:
 	{
 		file.close();
 	}
-	void EscribirLinea(string line)
+	void EscribirLinea(char* line)
 	{
 		file << line << endl;
 	}
-	void Escribir(string text)
+	void Escribir(char* text)
 	{
 		file << text;
 	}
