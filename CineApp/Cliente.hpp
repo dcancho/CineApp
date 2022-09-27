@@ -43,7 +43,7 @@ private:
 		//Values divided by commas, in order: nombre, DNI, nombreUsuario, contraseña
 		vector<string> tokens;
 		stringstream ss;
-		for (int i = 0; i < s.size(); i++)
+		for (int i = 0; i < s.length(); i++)
 		{
 			if (s[i] == ',')
 			{
@@ -60,7 +60,7 @@ private:
 		this->DNI = tokens[1];
 		this->nombreUsuario = tokens[2];
 		this->contraseña = tokens[3];
-		this->ID = stoi(tokens[4]);
+		//this->ID = stoi(tokens[4]);
 	}
 public:
 	void Imprimir(ostream out)

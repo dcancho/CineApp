@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="cartelera.txt" />
+    <Text Include="clientes.txt" />
   </ItemGroup>
 </Project>

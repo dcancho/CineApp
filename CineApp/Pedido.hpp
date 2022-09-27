@@ -26,7 +26,7 @@ public:
 
 		return nullptr;
 	}
-	void FromString(string s)
+	/*void FromString(string s)
 	{
 		//Formato:
 		//IDCliente, IDFuncion, IDProducto1, IDProducto2, ...
@@ -51,9 +51,13 @@ public:
 		{
 			Productos->agregaFinal(new Producto(stoi(tokens[i])));
 		}
-	}
+	}*/
 	void Imprimir(ostream out)
 	{
-		// Imprimir() por cada Producto en Productos
+		out << "Pedido Nro: " << this->ID;
+		for (int i = 0; i < Productos->longitud(); i++)
+		{
+			out<<Productos->obtenerPos(i)->ToText();
+		}
 	}
 };

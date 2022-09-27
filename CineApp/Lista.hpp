@@ -10,14 +10,19 @@ template <typename T>
 class Lista {
     struct Nodo;
     typedef function<int(T, T)> Comp;
-	
+
     Nodo* ini;
     uint    lon; // número de elementos en la lista
 
     Comp    comparar; // lambda de criterio de comparación
 
 public:
-    Lista() : ini(nullptr), lon(0), comparar([](T a, T b) {return a - b; }) {}
+    Lista()
+    {
+		ini = nullptr;
+		lon = 0;
+		comparar = [](T a, T b) { return a < b; };
+    }
     Lista(Comp comparar) : ini(nullptr), lon(0), comparar(comparar) {}
     ~Lista();
 
@@ -101,7 +106,7 @@ void Lista<T>::agregaPos(T elem, uint pos) {
 }
 template <typename T>
 void Lista<T>::agregaFinal(T elem) {
-    agregaPos(elem, lon); // ;)
+    agregaPos(elem, lon);
 }
 
 template <typename T>
@@ -136,10 +141,26 @@ void Lista<T>::eliminaInicial() {
 }
 template <typename T>
 void Lista<T>::eliminaPos(uint pos) {
+	if (pos >= 0 && pos < lon) {
+		if (pos == 0) {
+			eliminaInicial();
+		}
+		else {
+			Nodo* aux = ini;
+			for (int i = 1; i < pos; i++) {
+				aux = aux->sig;
+			}
+			Nodo* aux2 = aux->sig;
+			aux->sig = aux2->sig;
+			delete aux2;
+			lon--;
+		}
+	}
 
 }
 template <typename T>
 void Lista<T>::eliminaFinal() {
+	eliminaPos(lon - 1);
 
 }
 
@@ -157,7 +178,7 @@ T Lista<T>::obtenerPos(uint pos) {
         return aux->elem;
     }
     else {
-        return NADA;
+        return nullptr;
     }
 }
 template <typename T>
@@ -174,5 +195,5 @@ T Lista<T>::buscar(T elem) {
         }
         aux = aux->sig;
     }
-    return NADA;
+    return nullptr;
 }

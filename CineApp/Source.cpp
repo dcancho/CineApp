@@ -25,6 +25,8 @@ namespace CineApp
 			i++;
 		}
 		printf("Presione cualquier tecla para volver al menu...\n");
+		system("pause");
+		system("cls");
 	}
 
 	void RegistrarPedido()
@@ -70,6 +72,39 @@ namespace CineApp
 		return;
 	}
 
+	void menuAdministrador()
+	{
+		cout << "1) Imprimir datos clientes\n";
+		cout << "2) Imprimir datos pedidos\n";
+		cout << "3) Imprimir datos funciones\n";
+		cout << "4) Imprimir datos productos\n";
+		cout << "0) Salir\n";
+		char opcion;
+		cin >> opcion;
+		switch (opcion)
+		{
+		case '1':
+			for (int i = 0; i < BaseDatos->Clientes->longitud(); i++)
+			{
+				cout << BaseDatos->Clientes->obtenerPos(i)->ToString() << endl;
+			}
+			break;
+		case '2':
+			//Imprimir datos pedidos
+			break;
+		case '3':
+			//Imprimir datos funciones
+			break;
+		case '4':
+			//Imprimir datos productos
+			break;
+		case '0':
+			return;
+		default:
+			break;
+		}
+	}
+
 	void menu()
 	{
 		printf("Bienvenido, %s\n", Sesion->NombreUsuario);
@@ -78,6 +113,7 @@ namespace CineApp
 		printf("3) Buscar pedido\n");
 		printf("4) Cuenta\n");
 		printf("5) Salir\n");
+		printf("6) Administrador\n");
 		printf("Escriba una opcion: ");
 	}
 
@@ -106,6 +142,9 @@ namespace CineApp
 			case 5:
 				printf("Saliendo...\n");
 				Sleep(1000);
+				break;
+			case 6:
+				menuAdministrador();
 				break;
 			default:
 				printf("\nEscoja otra opción...");

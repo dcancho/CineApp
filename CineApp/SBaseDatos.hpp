@@ -38,6 +38,7 @@ private:
 		Funciones = new Lista<Funcion*>();
 		Cartelera = new Lista<string>();
 		LeerCartelera();
+		LeerClientes();
 	}
 	SBaseDatos(const SBaseDatos& obj) {}
 	void LeerClientes()

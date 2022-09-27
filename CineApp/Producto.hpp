@@ -57,6 +57,14 @@ public:
 	{
 		out << "- " << Nombre << "\t\t\t S/." << Valor << endl;
 	}
+	char* ToText()
+	{
+		stringstream ss;
+		ss << "- " << Nombre << "\t\t\t S/." << Valor << endl;
+		char* output = new char[ss.str().length() + 1];
+		strcpy(output, ss.str().c_str());
+		return output;
+	}
 	void setID(int id)
 	{
 		this->ID = id;
