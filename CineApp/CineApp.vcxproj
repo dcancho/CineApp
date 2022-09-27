@@ -132,6 +132,7 @@
   <ItemGroup>
     <Text Include="cartelera.txt" />
     <Text Include="clientes.txt" />
+    <Text Include="funciones.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

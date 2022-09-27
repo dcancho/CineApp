@@ -60,5 +60,6 @@
   <ItemGroup>
     <Text Include="cartelera.txt" />
     <Text Include="clientes.txt" />
+    <Text Include="funciones.txt" />
   </ItemGroup>
 </Project>

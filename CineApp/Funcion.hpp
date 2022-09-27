@@ -61,4 +61,12 @@ public:
 		this->costoAsiento = stof(tokens[5]);
 		this->ID = stoi(tokens[6]);
 	}
+	char* ToString()
+	{
+		stringstream ss;
+		ss << nombrePelicula << "," << capacidadMaxima << "," << capacidadActual << "," << horaInicio << "," << horaFin << "," << costoAsiento << "," << ID;
+		char* output = new char[ss.str().length() + 1];
+		strcpy(output, ss.str().c_str());
+		return output;
+	}
 };

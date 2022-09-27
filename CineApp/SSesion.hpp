@@ -21,6 +21,11 @@ public:
 	int IDUsuario;
 	Lista<Entidad*>* Pedidos = new Lista<Entidad*>();
 	bool isLogged;
+	void IniciarSesion(char* nombre)
+	{
+		NombreUsuario = nombre;
+		isLogged = true;
+	}
 	void CerrarSesion()
 	{
 		isLogged = false;

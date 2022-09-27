@@ -3,12 +3,12 @@
 
 class Cliente : public Entidad
 {
-private:
+public:
 	string nombre;
 	string DNI;
 	string nombreUsuario;
 	string contraseña;
-public:
+
 	Cliente() : Entidad()
 	{
 		nombre = "";

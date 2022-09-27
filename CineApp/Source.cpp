@@ -53,6 +53,22 @@ namespace CineApp
 	{
 		//Imprimir cada elemento de Sesion->Pedidos
 	}
+	
+	int BuscarCuenta(string usuario, string contrasena)
+	{
+		//Recorrer lista de clientes y buscar coincidencia
+		int i = 0;
+		while (i != BaseDatos->Clientes->longitud())
+		{
+			if (BaseDatos->Clientes->obtenerPos(i)->nombreUsuario == usuario && BaseDatos->Clientes->obtenerPos(i)->contraseña == contrasena)
+			{
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+	
 	void Cuenta()
 	{
 		if (Sesion->isLogged)
@@ -64,8 +80,33 @@ namespace CineApp
 		}
 		else
 		{
+			string usuario, contrasena;
+			do
+			{
+				cout << "\nEscriba su usuario: ";
+				cin >> usuario;
+				cout << "\nEscriba su contrasena: ";
+				cin >> contrasena;
+				if (-1!=BuscarCuenta(usuario, contrasena))
+				{
+					char* nombre = new char[usuario.length()];
+					strcpy(nombre, usuario.c_str());
+					Sesion->IniciarSesion(nombre);
+					break;
+				}
+				else
+				{
+					printf("Usuario o contrasena incorrectos, intente de nuevo.\n");
+					printf("Presione X para salir del inicio de sesion. Cualquier otra para seguir intentando\n");
+					char salir;
+					cin >> salir;
+					if (salir == 'X' || salir == 'x')
+					{
+						return;
+					}
+				}
+			} while (true);
 			printf("Iniciando sesion...\n");
-			//Pedir usuario y contrasena, comparar con lista de clientes en BaseDatos
 			Sleep(1000);
 			printf("Sesion iniciada!\n");
 		}
@@ -93,7 +134,10 @@ namespace CineApp
 			//Imprimir datos pedidos
 			break;
 		case '3':
-			//Imprimir datos funciones
+			for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
+			{
+				cout << BaseDatos->Funciones->obtenerPos(i)->ToString() << endl;
+			}
 			break;
 		case '4':
 			//Imprimir datos productos
