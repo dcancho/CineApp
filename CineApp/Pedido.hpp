@@ -1,28 +1,28 @@
 #include "Producto.hpp"
 #include "Lista.hpp"
-#include "SBaseDatos.hpp"
+#include "Funcion.hpp"
 
 class Pedido : public Entidad
 {
-private:
+public:
 	Lista<Producto*>* Productos;
 	int IDCliente;
-public:
+	Funcion* funcion;
 	Pedido() : Entidad()
 	{
 		Productos = new Lista<Producto*>();
 		IDCliente = -1;
 	}
 	~Pedido() {}
-	string ToString()
+	char* ToString()
 	{
-		return "Pedido Nro.: " + IDCliente+"\n";
+		//Salida:
+		//Pedido NroÅã: #ID#
+
+		return nullptr;
 	}
 	void Imprimir(ostream out)
 	{
-		for (int i = 0; i < Productos.cantidad; i++;)
-		{
-			Productos->AccedeElemento(i)->ImprimirFactura(ostream out);
-		}
+		// Imprimir() por cada Producto en Productos
 	}
 };

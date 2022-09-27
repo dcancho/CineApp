@@ -1,86 +1,78 @@
-Ôªø#include "Nodo.hpp"
-#include <functional>
-#define uint unsigned int
-template<class T>
-class Pila
-{
+#pragma once
+#include<iostream>
+#include"Lista.hpp"
+using namespace std;
+
+template<typename T >
+class Pila {
+	typedef long long ll;
 private:
-	Nodo<T>* Tope;
-	uint Tama√±o;
+	struct Nodo {
+		T valor;
+		Nodo* siguiente;
+		Nodo* anterior;
+		Nodo() = delete;
+		Nodo(T valor) :valor(valor), siguiente(nullptr), anterior(nullptr) {}
+	};
+	Nodo* cabeza;
+	Nodo* top;
+	size_t tamaÒo;
 public:
-	Pila()
-	{
-		Tope = nullptr;
-		Tama√±o = 0;
+	Pila() {
+		this->cabeza = this->top = nullptr;
+		this->tamaÒo = 0ll;
 	}
-	~Pila()
-	{
-		Nodo<T>* aux = Tope;
-		while (aux != nullptr)
-		{
-			aux = Tope;
-			Tope = Tope->Siguiente;
-			delete aux;
-		}
+	~Pila() { while (tamaÒo)pop(); }
+	size_t size() { return tamaÒo; }
+	T top() {
+		if (this->top == nullptr)cout << "No se puede retornar un valor de puntero nulo";
+		return this->top->value;
 	}
-	void Push(T elem)
-	{
-		Nodo<T>* nuevo = new Nodo<T>(elem);
-		if (Tama√±o == 0)
-		{
-			Tope = nuevo;
+	void pop() {
+		if (tamaÒo == 0)cout << "Pila vacÌa";
+		if (tamaÒo == 1) {
+			delete this->cabeza;
+			this->cabeza = this->top = nullptr;
+			tamaÒo = 0;
+			return;
 		}
-		else
-		{
-			nuevo->Siguiente = Tope;
-			Tope = nuevo;
-		}
-		Tama√±o++;
+		this->top = this->top->anterior;
+		this->top->siguiente->anterior = nullptr;
+		this->top->siguiente->siguiente = nullptr;
+		delete this->top->siguiente;
+		--tamaÒo;
+		this->top->siguiente = nullptr;
 	}
-	T Pop()
-	{
-		if (Tama√±o == 0)
-		{
-			throw "Pila vacia";
+	void push(T valor) {
+		Nodo* newNodo = new Nodo(valor);
+		if (!tamaÒo) {
+			this->cabeza = this->top = newNodo;
+			tamaÒo = 1ll;
+			return;
 		}
-		else
-		{
-			Nodo<T>* aux = Tope;
-			T elem = aux->Dato;
-			Tope = Tope->Siguiente;
-			delete aux;
-			Tama√±o--;
-			return elem;
-		}
+			newNodo->anterior = this->top;
+			this->top = newNodo;
+			++tamaÒo;
+		
 	}
-	T Peek()
-	{
-		if (Tama√±o == 0)
-		{
-			throw "Pila vacia";
+	void Imprime(T imprime) {
+		Nodo* aux = cabeza;
+		int i = 0;
+		while (aux->siguiente != nullptr) {
+			cout << "( " << i << ")";
+			imprime(aux->elem);
+			aux = aux->siguiente;
+			i++;
 		}
-		else
-		{
-			return Tope->Dato;
+		cout << "( " << i << ")";
+		imprime(aux->elem); cout << endl;
+	}
+	void Revertir() {
+		Nodo* newNodo = new Nodo();
+		if (tamaÒo > 0) {
+			pop();
+			Revertir();
+			push(valor);
 		}
-	}
-	bool Vacia()
-	{
-		return Tama√±o == 0;
-	}
-	void Flush()
-	{
-		Nodo<T>* aux = Tope;
-		while (aux != nullptr)
-		{
-			aux = Tope;
-			Tope = Tope->Siguiente;
-			delete aux;
-		}
-		Tama√±o = 0;
-	}
-	uint Cantidad()
-	{
-		return Tama√±o;
 	}
 };

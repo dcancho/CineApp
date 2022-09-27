@@ -1,25 +1,31 @@
 #include "Archivo.hpp"
-#include "Cliente.hpp"
 #include "Lista.hpp"
-#include "Pedido.hpp"
+#include "Entidad.hpp"
 
-class SBaseDatos
-{
-private:
-	SBaseDatos* BaseDatos;
-	Lista<Cliente*>* Clientes;
-	Lista<Pedido*>* Pedidos;
-	SBaseDatos()
-	{
 
-	}
+class SBaseDatos {
 public:
-	SBaseDatos* getInstance()
-	{
-		if (BaseDatos == nullptr)
+	static SBaseDatos* GetInstance() {
+		if (NULL == BaseDatos)
 		{
 			BaseDatos = new SBaseDatos();
 		}
 		return BaseDatos;
 	}
+	~SBaseDatos() {}
+	Lista<Entidad*>* Clientes;
+	Lista<Entidad*>* Pedidos;
+	Lista<Entidad*>* Funciones;
+private:
+	SBaseDatos()
+	{
+		Clientes = new Lista<Entidad*>();
+		Pedidos = new Lista<Entidad*>();
+		Funciones = new Lista<Entidad*>();
+	}
+	SBaseDatos(const SBaseDatos& obj) {}
+	static SBaseDatos* BaseDatos;
+
 };
+
+SBaseDatos* SBaseDatos::BaseDatos = 0;

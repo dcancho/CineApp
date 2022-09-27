@@ -18,7 +18,7 @@ class NodoD : public Nodo<T>
 {
 public:
 	NodoD<T>* Anterior;
-	NodoS(T elem, Nodo<T>* sig = nullptr, Nodo<T>* ant = nullptr) : Nodo<T>(elem, sig)
+	NodoD(T elem, Nodo<T>* sig = nullptr, Nodo<T>* ant = nullptr) : Nodo<T>(elem, sig)
 	{
 		Anterior = ant;
 	}

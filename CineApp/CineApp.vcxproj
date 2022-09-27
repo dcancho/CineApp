@@ -125,6 +125,7 @@
     <ClInclude Include="SSesion.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Registrar pedido.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

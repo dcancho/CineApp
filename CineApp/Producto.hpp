@@ -20,14 +20,22 @@ public:
 	{
 		
 	}
-	string ToString()
+	char* ToString()
 	{
-		return Nombre + ": " + std::to_string(Valor)+"\n";
+		//Formato:
+		//#Nombre#: S/ #Valor#
+		return nullptr;
 	}
 private:
 	void FromString()
 	{
-		//Values divided by commas, in order : Nombre, Valor
+		vector<string> tokens;
+		//Valores divididos por comas, orden: Nombre, Valor
+		/*
+		TO-DO
+		*/
+		this->Nombre = tokens[0];
+		this->Valor = stof(tokens[1]);
 		
 	}
 public:
