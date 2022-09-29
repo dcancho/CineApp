@@ -219,10 +219,10 @@ namespace CineApp
 				MostrarCartelera();
 				break;
 			case 2:
-				Sesion->isLogged ? RegistrarPedido() : printf("Por favor, inicie sesion para registrar un pedido...");
+				Sesion->isLogged ? RegistrarPedido() : printf("Por favor, inicie sesion para registrar un pedido...\n");
 				break;
 			case 3:
-				Sesion->isLogged ? BuscarPedido() : printf("Por favor, inicie sesion para buscar un pedido...");
+				Sesion->isLogged ? BuscarPedido() : printf("Por favor, inicie sesion para buscar un pedido...\n");
 				break;
 			case 4:
 				Cuenta();
@@ -235,7 +235,7 @@ namespace CineApp
 				menuAdministrador();
 				break;
 			default:
-				printf("\nEscoja otra opción...");
+				printf("\nEscoja otra opción...\n");
 				break;
 			}
 		} while (opcion != 5);
