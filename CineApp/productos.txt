@@ -8,5 +8,15 @@ Papas grandes,3.99
 Papas medianas,2.99
 Papas pequeñas,1.99
 Hot dog,3.99
-Hamburguesa,4.99
+Hamburguesa mediana,4.99
+Hamburguesa grande,5.99
 Pizza,5.99
+Pizza grande,7.99
+Paquete de 20 caramelos, 1.99
+Paquete de 20 chicles, 1.99
+Chocolate, 0.99
+Galletas, 0.99
+Paquete de 10 gomitas, 1.99
+Agua mineral, 1.99
+Nachos, 2.99
+Paleta, 0.99

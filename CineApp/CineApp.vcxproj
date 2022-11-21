@@ -115,10 +115,12 @@
   <ItemGroup>
     <ClInclude Include="Archivo.hpp" />
     <ClInclude Include="Cliente.hpp" />
-    <ClInclude Include="E:\source\TF\TF\Cola.hpp" />
+    <ClInclude Include="Cola.hpp" />
+    <ClInclude Include="DataGen.hpp" />
     <ClInclude Include="Entidad.hpp" />
     <ClInclude Include="Funcion.hpp" />
     <ClInclude Include="Hash.hpp" />
+    <ClInclude Include="HashTable.hpp" />
     <ClInclude Include="Lista.hpp" />
     <ClInclude Include="Nodo.hpp" />
     <ClInclude Include="Pedido.hpp" />

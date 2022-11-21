@@ -1,5 +1,10 @@
 Pedido Nro: 0
 - Asiento x1			 S/.25
 - Asiento x1			 S/.25
+- Asiento x1			 S/.25
+- Asiento x1			 S/.25
+- Asiento x1			 S/.25
+- ﻿Canchita grande			 S/.17.99
+- ﻿Canchita grande			 S/.17.99
 - ﻿Canchita grande			 S/.17.99
 - ﻿Canchita grande			 S/.17.99

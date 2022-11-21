@@ -3,6 +3,7 @@
 #include"Lista.hpp"
 using namespace std;
 
+//Estructura 2
 template<typename T >
 class Pila {
 	typedef long long ll;

@@ -1,5 +1,4 @@
-﻿#pragma once
-#include <iostream>
+﻿#include <iostream>
 #include <Windows.h>
 #include "SBaseDatos.hpp"
 #include "SSesion.hpp"
@@ -19,16 +18,16 @@ namespace CineApp
 	void MostrarCartelera()
 	{
 		int i = 0;
-		while (i!=BaseDatos->Cartelera->longitud())
+		while (i != BaseDatos->Cartelera->longitud())
 		{
-			cout<<BaseDatos->Cartelera->obtenerPos(i)<<endl;
+			cout << BaseDatos->Cartelera->obtenerPos(i) << endl;
 			i++;
 		}
 		printf("Presione cualquier tecla para volver al menu...\n");
 		system("pause");
 		system("cls");
 	}
-
+	//Registrar un nuevo pedido y se envia a la sesion
 	void RegistrarPedido()
 	{
 		//Crear pedido
@@ -36,7 +35,7 @@ namespace CineApp
 
 		//Asignar ID de cliente al pedido
 		nuevoPedido->IDCliente = Sesion->IDUsuario;
-		
+
 		//Imprimir funciones y escoger una, asignar a Pedido
 		for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
 		{
@@ -54,11 +53,11 @@ namespace CineApp
 		{
 			nuevoPedido->Productos->agregaFinal(new Producto("Asiento x1", 25.0f));
 			cantidad--;
-		}while(cantidad);
+		} while (cantidad);
 		//Seleccionar productos de la dulcería
 		for (int i = 0; i < BaseDatos->Productos->longitud(); i++)
 		{
-			cout << i + 1<<") ";
+			cout << i + 1 << ") ";
 			BaseDatos->Productos->obtenerPos(i)->Imprimir();
 		}
 		printf("Que productos desea comprar? ");
@@ -84,9 +83,10 @@ namespace CineApp
 
 	void BuscarPedido()
 	{
+		//TO-DO
 		//Imprimir cada elemento de Sesion->Pedidos
 	}
-	
+
 	int BuscarCuenta(string usuario, string contrasena)
 	{
 		//Recorrer lista de clientes y buscar coincidencia
@@ -101,7 +101,7 @@ namespace CineApp
 		}
 		return -1;
 	}
-	
+
 	void Cuenta()
 	{
 		if (Sesion->isLogged)
@@ -120,7 +120,7 @@ namespace CineApp
 				cin >> usuario;
 				cout << "\nEscriba su contrasena: ";
 				cin >> contrasena;
-				if (-1!=BuscarCuenta(usuario, contrasena))
+				if (-1 != BuscarCuenta(usuario, contrasena))
 				{
 					char* nombre = new char[usuario.length()];
 					strcpy(nombre, usuario.c_str());
@@ -153,6 +153,7 @@ namespace CineApp
 		cout << "2) Imprimir datos pedidos\n";
 		cout << "3) Imprimir datos funciones\n";
 		cout << "4) Imprimir datos productos\n";
+		cout << "5) Generar datos de prueba\n";
 		cout << "0) Salir\n";
 		char opcion;
 		cin >> opcion;
@@ -178,6 +179,12 @@ namespace CineApp
 			{
 				cout << BaseDatos->Productos->obtenerPos(i)->ToString() << endl;
 			}
+			break;
+		case '5':
+			//TO-DO
+			//Generador de registros
+			//Clientes
+			//Pedidos
 			break;
 		case '0':
 			return;

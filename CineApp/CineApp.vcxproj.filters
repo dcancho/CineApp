@@ -54,6 +54,12 @@
     <ClInclude Include="Cola.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataGen.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTable.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">

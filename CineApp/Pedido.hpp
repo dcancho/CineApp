@@ -3,73 +3,76 @@
 #include "Lista.hpp"
 #include <ostream>
 
-class Pedido : public Entidad
-{
-public:
-	Lista<Producto*>* Productos;
-	int IDCliente;
-	int IDFuncion;
-	Pedido() : Entidad()
+namespace CineApp {
+	//Entidad 4
+	class Pedido : public Entidad
 	{
-		Productos = new Lista<Producto*>();
-		IDCliente = -1;
-	}
-	Pedido(string s) : Entidad()
-	{
-		Productos = new Lista<Producto*>();
-		FromString(s);
-	}
-	~Pedido() {}
-	char* ToString()
-	{
-		//Salida:
-		//Pedido NroÅã: #ID#
+	public:
+		Lista<Producto*>* Productos;
+		int IDCliente;
+		int IDFuncion;
+		Pedido() : Entidad()
+		{
+			Productos = new Lista<Producto*>();
+			IDCliente = -1;
+		}
+		Pedido(string s) : Entidad()
+		{
+			Productos = new Lista<Producto*>();
+			FromString(s);
+		}
+		~Pedido() {}
+		char* ToString()
+		{
+			//Salida:
+			//Pedido NroÅã: #ID#
 
-		return nullptr;
-	}
-	/*void FromString(string s)
-	{
-		//Formato:
-		//IDCliente, IDFuncion, IDProducto1, IDProducto2, ...
-		vector<string> tokens;
-		stringstream ss;
-		for (int i = 0; i < s.size(); i++)
+			return nullptr;
+		}
+		/*void FromString(string s)
 		{
-			if (s[i] == ',')
+			//Formato:
+			//IDCliente, IDFuncion, IDProducto1, IDProducto2, ...
+			vector<string> tokens;
+			stringstream ss;
+			for (int i = 0; i < s.size(); i++)
 			{
-				tokens.push_back(ss.str());
-				ss.str("");
+				if (s[i] == ',')
+				{
+					tokens.push_back(ss.str());
+					ss.str("");
+				}
+				else
+				{
+					ss << s[i];
+				}
 			}
-			else
+			tokens.push_back(ss.str());
+			this->IDCliente = stoi(tokens[0]);
+			this->IDFuncion = stoi(tokens[1]);
+			for (int i = 2; i < tokens.size(); i++)
 			{
-				ss << s[i];
+				Productos->agregaFinal(new Producto(stoi(tokens[i])));
 			}
 		}
-		tokens.push_back(ss.str());
-		this->IDCliente = stoi(tokens[0]);
-		this->IDFuncion = stoi(tokens[1]);
-		for (int i = 2; i < tokens.size(); i++)
+*/		void Imprimir(ostream out)
 		{
-			Productos->agregaFinal(new Producto(stoi(tokens[i])));
+			out << "Pedido Nro: " << this->ID;
+			for (int i = 0; i < Productos->longitud(); i++)
+			{
+				out << Productos->obtenerPos(i)->ToText();
+			}
 		}
-	}*/
-	void Imprimir(ostream out)
-	{
-		out << "Pedido Nro: " << this->ID;
-		for (int i = 0; i < Productos->longitud(); i++)
-		{
-			out<<Productos->obtenerPos(i)->ToText();
-		}
-	}
 
-	void ImprimirComprobante()
-	{
-		ofstream out("Comprobante.txt");
-		out << "Pedido Nro: " << this->ID<<endl;
-		for (int i = 0; i < Productos->longitud(); i++)
+		void ImprimirComprobante()
 		{
-			out << Productos->obtenerPos(i)->ToText();
+			ofstream out("Comprobante.txt");
+			out << "Pedido Nro: " << this->ID << endl;
+			for (int i = 0; i < Productos->longitud(); i++)
+			{
+				out << Productos->obtenerPos(i)->ToText();
+			}
+			out.close();
 		}
-		out.close();
-	}
-};
+	};
+}

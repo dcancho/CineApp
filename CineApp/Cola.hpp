@@ -9,6 +9,8 @@ public:
 		elem = e; siguiente = s;
 	}
 };
+
+//Estructura 1
 template<class T >
 class Cola {
 private:
