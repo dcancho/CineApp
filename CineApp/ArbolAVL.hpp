@@ -27,6 +27,12 @@ public:
 	}
 	void insertar(T value) { _insertar(_raiz, value); }
 	void preOrden() { _preOrden(_raiz); }
+	void _enOrden(Nodo* n) {
+		if (!n) return;
+		_enOrden(n->izq);
+		procesar(n->value);
+		_enOrden(n->der);
+	}
 	T maximo() {
 		Nodo* aux = _raiz;
 		while (aux->der != nullptr)aux = aux->der;
