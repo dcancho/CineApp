@@ -34,13 +34,13 @@ namespace CineApp
 		Pedido* nuevoPedido = new Pedido();
 
 		//Asignar ID de cliente al pedido
-		nuevoPedido->IDCliente = Sesion->IDUsuario;
+		nuevoPedido->DNICliente = Sesion->IDUsuario;
 
-		//Imprimir funciones y escoger una, asignar a Pedido
-		for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
-		{
-			BaseDatos->Funciones->obtenerPos(i)->Imprimir(cout);
-		}
+		////Imprimir funciones y escoger una, asignar a Pedido
+		//for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
+		//{
+		//	BaseDatos->Funciones->obtenerPos(i)->Imprimir(cout);
+		//}
 		int IDFuncion;
 		cout << "Ingrese el ID de la funcion que desea comprar: ";
 		cin >> IDFuncion;
@@ -147,53 +147,50 @@ namespace CineApp
 		return;
 	}
 
-	void menuAdministrador()
-	{
-		cout << "1) Imprimir datos clientes\n";
-		cout << "2) Imprimir datos pedidos\n";
-		cout << "3) Imprimir datos funciones\n";
-		cout << "4) Imprimir datos productos\n";
-		cout << "5) Generar datos de prueba\n";
-		cout << "0) Salir\n";
-		char opcion;
-		cin >> opcion;
-		switch (opcion)
-		{
-		case '1':
-			for (int i = 0; i < BaseDatos->Clientes->longitud(); i++)
-			{
-				cout << BaseDatos->Clientes->obtenerPos(i)->ToString() << endl;
-			}
-			break;
-		case '2':
-			//Imprimir datos pedidos
-			break;
-		case '3':
-			for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
-			{
-				cout << BaseDatos->Funciones->obtenerPos(i)->ToString() << endl;
-			}
-			break;
-		case '4':
-			for (int i = 0; i < BaseDatos->Productos->longitud(); i++)
-			{
-				cout << BaseDatos->Productos->obtenerPos(i)->ToString() << endl;
-			}
-			break;
-		case '5':
-			//TO-DO
-			//Generador de registros
-			//Clientes
-			//Pedidos
-			break;
-		case '0':
-			return;
-		default:
-			break;
-		}
-		system("pause");
-		system("cls");
-	}
+	//void menuAdministrador()
+	//{
+	//	cout << "1) Imprimir datos clientes\n";
+	//	cout << "2) Imprimir datos pedidos\n";
+	//	cout << "3) Imprimir datos funciones\n";
+	//	cout << "4) Imprimir datos productos\n";
+	//	cout << "5) Generar datos de prueba\n";
+	//	cout << "0) Salir\n";
+	//	char opcion;
+	//	cin >> opcion;
+	//	switch (opcion)
+	//	{
+	//	case '1':
+	//		for (int i = 0; i < BaseDatos->Clientes->longitud(); i++)
+	//		{
+	//			cout << BaseDatos->Clientes->obtenerPos(i)->ToString() << endl;
+	//		}
+	//		break;
+	//	case '2':
+	//		//Imprimir datos pedidos
+	//		break;
+	//	/*case '3':
+	//		for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
+	//		{
+	//			cout << BaseDatos->Funciones->obtenerPos(i)->ToString() << endl;
+	//		}
+	//		break;*/
+	//	case '4':
+	//		for (int i = 0; i < BaseDatos->Productos->longitud(); i++)
+	//		{
+	//			cout << BaseDatos->Productos->obtenerPos(i)->ToString() << endl;
+	//		}
+	//		break;
+	//	case '5':
+	//		DataGen::GenerarCartelera(10);
+	//		break;
+	//	case '0':
+	//		return;
+	//	default:
+	//		break;
+	//	}
+	//	system("pause");
+	//	system("cls");
+	//}
 
 	void menu()
 	{
@@ -238,9 +235,9 @@ namespace CineApp
 				printf("Saliendo...\n");
 				Sleep(1000);
 				break;
-			case 6:
+			/*case 6:
 				menuAdministrador();
-				break;
+				break;*/
 			default:
 				printf("\nEscoja otra opción...\n");
 				break;

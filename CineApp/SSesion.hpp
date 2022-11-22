@@ -6,11 +6,6 @@
 
 
 namespace CineApp {
-	/*
-		Singleton de la clase SSesion
-		Se encarga de manejar la sesión del usuario y administrar pedidos que realice en su visita. Al finalizar una sesión, ya sea por cierre de sesión o cierre de la aplicación, se debe llamar al método FlushData() para liberar la memoria utilizada por el singleton, luego de haber cargado los pedidos en la base de datos.
-		Autor: Diego Cancho
-		*/
 	//Entidad 7
 	class SSesion
 	{

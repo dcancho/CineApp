@@ -60,6 +60,10 @@ using namespace std;
 		{
 			return archivo[i];
 		}
+		vector<string> returnArchivo()
+		{
+			return archivo;
+		}
 	};
 
 	//Escritor .txt

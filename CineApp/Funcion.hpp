@@ -8,36 +8,24 @@ namespace CineApp {
 	{
 	private:
 		string nombrePelicula;
-		int capacidadMaxima;
-		int capacidadActual;
 		string horaInicio;
-		string horaFin;
+		int duracion;
 		float costoAsiento;
+		
 	public:
-		Funcion() :Entidad()
+		Funcion() : Entidad()
 		{
 			nombrePelicula = "";
-			capacidadMaxima = 0;
-			capacidadActual = 0;
 			horaInicio = "";
-			horaFin = "";
-			costoAsiento = 0.0f;
+			duracion = 0;
+			costoAsiento = 0;
 		}
-		Funcion(string nombre, int max, int actual, string inicio, string fin, float precio) : Entidad()
+		Funcion(string s) : Entidad()
 		{
-			this->capacidadActual = actual;
-			this->capacidadMaxima = max;
-			this->costoAsiento = precio;
-			this->horaFin = fin;
-			this->horaInicio = inicio;
-			this->nombrePelicula = nombre;
+			FromString(s);
 		}
 		~Funcion()
 		{
-		}
-		Funcion(string s)
-		{
-			FromString(s);
 		}
 		void FromString(string s)
 		{
@@ -56,25 +44,26 @@ namespace CineApp {
 				}
 			}
 			tokens.push_back(ss.str());
-			this->nombrePelicula = tokens[0];
-			this->capacidadMaxima = stoi(tokens[1]);
-			this->capacidadActual = stoi(tokens[2]);
-			this->horaInicio = tokens[3];
-			this->horaFin = tokens[4];
-			this->costoAsiento = stof(tokens[5]);
-			this->ID = stoi(tokens[6]);
+			this->ID = stoi(tokens[0]);
+			this->nombrePelicula = tokens[1];
+			this->horaInicio = tokens[2];
+			this->duracion = stoi(tokens[3]);
+			this->costoAsiento = stof(tokens[4]);
 		}
 		char* ToString()
 		{
 			stringstream ss;
-			ss << nombrePelicula << "," << capacidadMaxima << "," << capacidadActual << "," << horaInicio << "," << horaFin << "," << costoAsiento << "," << ID;
+			ss << this->ID << "," << this->nombrePelicula << "," << this->horaInicio << "," << this->duracion << "," << this->costoAsiento;
 			char* output = new char[ss.str().length() + 1];
 			strcpy(output, ss.str().c_str());
 			return output;
 		}
 		void Imprimir(ostream& out)
 		{
-			out << "- " << nombrePelicula << "\t\t\t" << horaInicio << "\t\t\t" << horaFin << "\t\t\t" << capacidadActual << "/" << capacidadMaxima << "\t\t\tS/." << costoAsiento << endl;
+			out << "Funcion Nro: " << this->ID << endl;
+			out << "Nombre de la pelicula: " << this->nombrePelicula << endl;
+			out << "Hora de inicio: " << this->horaInicio << endl;
+			out << "Duracion: " << this->duracion << endl;
 		}
 	};
 }
