@@ -156,14 +156,6 @@ namespace CineApp
 		arbol->IterarPreOrden();
 		
 	}
-	
-	void ordenarElemento()
-	{
-		//Ordenar funciones por el precio de los asientos
-		Lista<Funcion*>* funciones = BaseDatos->Funciones;
-		
-		
-	}
 
 	void menuAdministrador()
 	{
@@ -171,7 +163,6 @@ namespace CineApp
 		cout << "3) Imprimir datos funciones\n";
 		cout << "4) Imprimir datos productos\n";
 		cout << "5) Crear arbol AVL de funciones por precio\n";
-		cout << "6) Ordenar elementos\n";
 		cout << "0) Salir\n";
 		char opcion;
 		cin >> opcion;
@@ -197,9 +188,6 @@ namespace CineApp
 			break;
 		case '5':
 			CrearArbolAVLFuncion();
-			break;
-		case '6':
-			ordenarElemento();
 			break;
 		case '0':
 			
