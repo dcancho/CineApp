@@ -5,6 +5,8 @@
 #include "Archivo.hpp"
 #include "Funcion.hpp"
 #include "Pedido.hpp"
+#include "ArbolAVL.hpp"
+#include "Ordenamientos.hpp"
 
 using namespace System;
 using namespace std;
@@ -81,12 +83,6 @@ namespace CineApp
 
 	}
 
-	void BuscarPedido()
-	{
-		//TO-DO
-		//Imprimir cada elemento de Sesion->Pedidos
-	}
-
 	int BuscarCuenta(string usuario, string contrasena)
 	{
 		//Recorrer lista de clientes y buscar coincidencia
@@ -147,13 +143,35 @@ namespace CineApp
 		return;
 	}
 
+	void CrearArbolAVLFuncion()
+	{
+		auto mostrarFuncion = [](Funcion* funcion) {cout << funcion->nombrePelicula << endl; };
+		auto compararFuncion = [](Funcion* funcion1, Funcion* funcion2) {return funcion1->costoAsiento < funcion2->costoAsiento; };
+		auto igualFuncion = [](Funcion* funcion1, Funcion* funcion2) {return funcion1->costoAsiento == funcion2->costoAsiento; };
+		ArbolAVL<Funcion*>* arbol = new ArbolAVL<Funcion*>(mostrarFuncion, compararFuncion, igualFuncion);
+		for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
+		{
+			arbol->insertar(BaseDatos->Funciones->obtenerPos(i));
+		}
+		arbol->IterarPreOrden();
+		
+	}
+	
+	void ordenarElemento()
+	{
+		//Ordenar funciones por el precio de los asientos
+		Lista<Funcion*>* funciones = BaseDatos->Funciones;
+		
+		
+	}
+
 	void menuAdministrador()
 	{
 		cout << "1) Imprimir datos clientes\n";
-		cout << "2) Imprimir datos pedidos\n";
 		cout << "3) Imprimir datos funciones\n";
 		cout << "4) Imprimir datos productos\n";
-		cout << "5) Generar datos de prueba\n";
+		cout << "5) Crear arbol AVL de funciones por precio\n";
+		cout << "6) Ordenar elementos\n";
 		cout << "0) Salir\n";
 		char opcion;
 		cin >> opcion;
@@ -164,9 +182,6 @@ namespace CineApp
 			{
 				cout << BaseDatos->Clientes->obtenerPos(i)->ToString() << endl;
 			}
-			break;
-		case '2':
-			//Imprimir datos pedidos
 			break;
 		case '3':
 			for (int i = 0; i < BaseDatos->Funciones->longitud(); i++)
@@ -181,12 +196,13 @@ namespace CineApp
 			}
 			break;
 		case '5':
-			//TO-DO
-			//Generador de registros
-			//Clientes
-			//Pedidos
+			CrearArbolAVLFuncion();
+			break;
+		case '6':
+			ordenarElemento();
 			break;
 		case '0':
+			
 			return;
 		default:
 			break;
@@ -197,17 +213,22 @@ namespace CineApp
 
 	void menu()
 	{
-		printf("*******************************************************\n");
-		printf("---------------------CINEPLANET------------------------\n");
-		printf("*******************************************************\n");
-		printf("Bienvenido, %s\n", Sesion->NombreUsuario);
+		printf("****************************************************************************************\n");
+		printf("..######..####.##....##.########.########..##..........###....##....##.########.########\n");
+		printf(".##....##..##..###...##.##.......##.....##.##.........##.##...###...##.##..........##...\n");
+		printf(".##........##..####..##.##.......##.....##.##........##...##..####..##.##..........##...\n");
+		printf(".##........##..##.##.##.######...########..##.......##.....##.##.##.##.######......##...\n");
+		printf(".##........##..##..####.##.......##........##.......#########.##..####.##..........##...\n");
+		printf(".##....##..##..##...###.##.......##........##.......##.....##.##...###.##..........##...\n");
+		printf("..######..####.##....##.########.##........########.##.....##.##....##.########....##...\n");
+		printf("****************************************************************************************\n");
+		printf("Bienvenid@, %s\n", Sesion->NombreUsuario);
 		printf("1) Mostrar cartelera\n");
 		printf("2) Registrar pedido\n");
-		printf("3) Buscar pedido\n");
-		printf("4) Cuenta\n");
-		printf("5) Salir\n");
-		printf("6) Administrador\n");
-		printf("*******************************************************\n");
+		printf("3) Cuenta\n");
+		printf("4) Salir\n");
+//		printf("5) Administrador\n");
+		printf("****************************************************************************************\n");
 		printf("Escriba una opcion: ");
 
 
@@ -229,23 +250,20 @@ namespace CineApp
 				Sesion->isLogged ? RegistrarPedido() : printf("Por favor, inicie sesion para registrar un pedido...\n");
 				break;
 			case 3:
-				Sesion->isLogged ? BuscarPedido() : printf("Por favor, inicie sesion para buscar un pedido...\n");
-				break;
-			case 4:
 				Cuenta();
 				break;
 			case 5:
+				menuAdministrador();
+				break;
+			case 4:
 				printf("Saliendo...\n");
 				Sleep(1000);
-				break;
-			case 6:
-				menuAdministrador();
 				break;
 			default:
 				printf("\nEscoja otra opción...\n");
 				break;
 			}
-		} while (opcion != 5);
+		} while (opcion != 4);
 		printf("Gracias por tu visita, %s, vuelve pronto!", Sesion->NombreUsuario);
 		system("pause");
 		return 0;

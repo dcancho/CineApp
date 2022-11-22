@@ -11,13 +11,14 @@ namespace CineApp {
 		string DNI;
 		string nombreUsuario;
 		string contraseña;
+		
 
 		Cliente() : Entidad()
 		{
 			nombre = "";
 			DNI = "";
 			nombreUsuario = "";
-			contraseña = "";		//Hashed(aun no implementado)
+			contraseña = "";		
 		}
 		Cliente(string nombre, string DNI, string nombreUsuario, string contraseña) : Entidad()
 		{
@@ -35,7 +36,7 @@ namespace CineApp {
 		char* ToString()
 		{
 			stringstream ss;
-			ss << nombre << "," << DNI << "," << nombreUsuario << "," << contraseña << "," << ID;
+			ss << nombre << "," << DNI << "," << nombreUsuario << "," << contraseña << ",";
 			char* output = new char[ss.str().length() + 1];
 			strcpy(output, ss.str().c_str());
 			return output;

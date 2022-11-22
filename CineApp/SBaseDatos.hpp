@@ -9,11 +9,6 @@
 
 
 namespace CineApp {
-	/*
-		Singleton de la clase SBaseDatos
-		Se encarga de almacenar los datos leidos de los archivos pedidos.txt, clientes.txt, cartelera.txt y funciones.txt para su uso durante la ejecucion, realizando una única lectura. Se debe <<siempre>> mandar los nuevos datos a esta base de datos. Al terminar la ejecución (o al llamar a la funcion WriteDown()), se escriben los datos a los archivos de texto.
-		Autor: Diego Cancho
-		*/
 	//Entidad 6
 	class SBaseDatos {
 

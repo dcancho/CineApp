@@ -27,9 +27,6 @@
     <ClInclude Include="Funcion.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hash.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Lista.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,10 +51,16 @@
     <ClInclude Include="Cola.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataGen.hpp">
+    <ClInclude Include="HashTable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HashTable.hpp">
+    <ClInclude Include="ArbolAVL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ordenamientos.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Merge.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

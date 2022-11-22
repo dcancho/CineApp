@@ -6,7 +6,7 @@ namespace CineApp {
 	//Entidad 3
 	class Funcion : public Entidad
 	{
-	private:
+	public:
 		string nombrePelicula;
 		int capacidadMaxima;
 		int capacidadActual;

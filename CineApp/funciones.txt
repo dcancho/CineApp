@@ -1,5 +1,23 @@
-Ice Age,100,0,15:30,17:20,20,1
-The Croods,100,0,17:20,19:10,20,2
-Ice Age: The Meltdown,100,0,19:10,21:00,20,3
-Avengers Assemble,100,0,12:00,13:45,25,4
-Avengers: Infinity War,70,0,21:00,23:30,20,5
+Friends With Kids,100,0,06:57,18:31,19,0
+Transformers,100,0,11:22,19:59,24,1
+Shrek,100,0,03:13,21:32,23,2
+Harry Potter and The Sorcerer's Stone,100,0,21:24,05:21,18,3
+Thor : Ragnarok,100,0,20:57,21:22,27,4
+Interstellar,100,0,11:19,01:51,28,5
+The Godfather,100,0,11:26,18:50,18,6
+Seven,100,0,16:16,16:52,18,7
+Mr. Bean's Holiday,100,0,21:56,09:50,20,8
+Limitless,100,0,06:10,09:11,18,9
+Fantastic Beasts and Where To Find Them,100,0,23:39,10:44,26,10
+Zootropolis,100,0,22:50,11:36,18,11
+Allied,100,0,15:54,19:36,27,12
+Harry Potter and The Chamber Of Secrets,100,0,14:48,09:42,11,13
+The Notebook,100,0,11:43,18:49,14,14
+SING,100,0,09:40,17:16,16,15
+Rambo I,100,0,17:31,16:34,20,16
+Octav,100,0,17:39,09:33,22,17
+Terminator 2,100,0,18:46,12:21,25,18
+Rambo II,100,0,15:27,23:34,22,19
+Alien,100,0,22:10,04:51,16,20
+American Pie,100,0,03:40,07:51,27,21
+Romeo and Juliet,100,0,23:17,15:13,15,22
