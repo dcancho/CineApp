@@ -6,13 +6,12 @@
 #include "Funcion.hpp"
 #include "Producto.hpp"
 #include "Pila.hpp"
+#include "HashTable.hpp"
 
 
 namespace CineApp {
 	//Entidad 6
-	class SBaseDatos {
-
-		
+	class SBaseDatos {	
 	public:
 		static SBaseDatos* getInstance()
 		{
@@ -28,6 +27,8 @@ namespace CineApp {
 		Lista<Funcion*>* Funciones;
 		Lista<string>* Cartelera;
 		Lista<Producto*>* Productos;
+		HashTable<string, Cliente*>* HashClientes;
+
 	private:
 		static SBaseDatos* BaseDatos;
 		SBaseDatos()
@@ -86,6 +87,15 @@ namespace CineApp {
 			while (getline(*archivo, linea))
 			{
 				Productos->agregaFinal(new Producto(linea));
+			}
+		}
+		void InicializarHashTable()
+		{
+			//Create hashtable using cliente->DNI as key
+			HashClientes = new HashTable<string, Cliente*>(Clientes->longitud());
+			for (int i = 0; i < Clientes->longitud(); i++)
+			{
+				HashClientes->insert(Clientes->obtenerPos(i)->DNI(), Clientes->obtenerPos(i));
 			}
 		}
 	};
